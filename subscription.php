@@ -19,3 +19,7 @@ function __construct(string $subscriptionName, string $description, string $cycl
     $this->remaindMe = $remaindMe;
     $this->price = $price;
 }
+
+function addSubscription(){
+    
+}
