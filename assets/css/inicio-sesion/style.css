@@ -1,15 +1,16 @@
 
+
 @font-face {
   font-family:rubik;
-  src: url('../../fonts/rubik-Medium.ttf'); 
+  src: url(../../fonts/rubik-Medium.ttf); 
 }
 @font-face {
   font-family:roboto-regular;
-  src: url('../../fonts/roboto-Regular.ttf'); 
+  src: url(../../fonts/roboto-Regular.ttf); 
 }
 @font-face {
   font-family:roboto-medium;
-  src: url('../../fonts/roboto-medium.ttf'); 
+  src: url(../../fonts/roboto-medium.ttf); 
 }
 * {
 	margin: 0px; 
