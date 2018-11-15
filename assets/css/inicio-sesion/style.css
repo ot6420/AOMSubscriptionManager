@@ -1,15 +1,15 @@
 
 @font-face {
-  font-family: rubik;
-  src: url('../../fonts/Rubik-Medium.ttf'); 
+  font-family:rubik;
+  src: url('../../fonts/rubik-Medium.ttf'); 
 }
 @font-face {
-  font-family: roboto-regular;
-  src: url('../../fonts/Roboto-Regular.ttf'); 
+  font-family:roboto-regular;
+  src: url('../../fonts/roboto-Regular.ttf'); 
 }
 @font-face {
-  font-family: roboto-medium;
-  src: url('../../fonts/Roboto-medium.ttf'); 
+  font-family:roboto-medium;
+  src: url('../../fonts/roboto-medium.ttf'); 
 }
 * {
 	margin: 0px; 
@@ -350,8 +350,6 @@ iframe {
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
-
- 
 }
 .caja-titulo-btn:hover {
   background: rgb(101, 194, 104);
@@ -580,6 +578,14 @@ top:50px;
   padding: 7px 17px;
   border-radius:12px;
   font-weight: 600;
+  border-style: solid;
+  border-width: 2px;
+  border-color: white;
+  transition: all 0.0s !important;
+	-webkit-transition: all 0.0s !important;
+}
+.txt4:hover{
+  border-color:#dca204;  
 }
 .txt5 {
   font-family: 'Open Sans', sans-serif;
