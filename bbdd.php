@@ -111,12 +111,8 @@ class bbdd {
     
     function login($user,$pass){
     
-    $c = $this->bbddConnection();
-    $select = "select email from Users where email='$user' and pass='$pass'";
-    $resultado = mysqli_query($c, $select);
-    desconectar($c);
-    return mysqli_num_rows($resultado) ==1;
-    
+        $us=$this->getAll(['email'=>$user,'pass'=>$pass]);
+        return !empty($us);
 }
 
 }
