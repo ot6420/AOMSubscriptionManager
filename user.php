@@ -1,7 +1,8 @@
 <?php
+session_start();
+require_once 'bbdd.php';
 
-class user {
-
+class user extends bbdd{
     private $firstName;
     private $lastName;
     private $birthDate;
@@ -20,14 +21,21 @@ class user {
         $this->pass1 = $pass1;
         $this->language = $language;
         $this->userType = $userType;
+        parent::__construct('Users', 'UserID');
     }
-
-    function checkPass($pass, $pass1) {
-        if ($pass == $pass1) {
-            
-        } else {
-            return false;
-        }
+    
+    function insert_values()
+    {
+        $this->insert(['firstName' => $this->firstName, 'lastName' => $this->lastName, 'birthDate' => $this->birthDate, 'email' => $this->email]);
     }
-
 }
+    
+    
+//    function checkPass($pass, $pass1) {
+//        if ($pass == $pass1) {
+//            
+//        } else {
+//            return false;
+//        }
+//    }
+
