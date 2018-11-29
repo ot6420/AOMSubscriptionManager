@@ -47,12 +47,21 @@ require_once 'bbdd.php';
                         </div><br>
 
                         <?php
+                      //  print_r($_POST);
                         if (isset($_POST["enter"])) {
+                      //      echo 'hola';
                             $user = $_POST["email"];
                             $pass = $_POST["password"];
-                            $a = new bbdd();
-                            $a->login($user, $pass);
+                            $a = new bbdd("Users","userid");
+                            $res=$a->login($user, $pass);
+                            if($res){
+                               header("Location:mainpage.php");
+                            }else{
+                                echo'<script>alert("Contraseña incorrecta")</script>';
+                             
+                            }
                         }
+                        
                         ?>
 
 
