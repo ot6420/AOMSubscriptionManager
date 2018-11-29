@@ -55,9 +55,9 @@ require_once 'bbdd.php';
                             $a = new bbdd("Users","userid");
                             $res=$a->login($user, $pass);
                             if($res){
-                                echo 'ok';
+                               header("Location:mainpage.php");
                             }else{
-                                echo'incorrecto';
+                                echo'<script>alert("Contraseña incorrecta")</script>';
                              
                             }
                         }
