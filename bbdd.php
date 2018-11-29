@@ -82,7 +82,7 @@ class bbdd {
         return $res->fetch(PDO::FETCH_ASSOC);
     }
 
-    function insert() {
+    function insert($valores) {
         try {
             $campos = join(",", array_keys($valores));
             $parametros = ":" . join(",:", array_keys($valores));
