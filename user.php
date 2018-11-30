@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+//session_start();
 require_once 'bbdd.php';
 
 class user extends bbdd {
@@ -25,19 +25,16 @@ class user extends bbdd {
         $this->userType = $userType;
         parent::__construct('Users', 'UserID');
     }
-    
-//    function checkPass($pass, $pass1) {
-//        if ($pass == $pass1){
-//            $pass_checked = $pass;
-//        } else {
-//            return false;
-//        }
-//    }
 
     function insert_values() {
-        $this->insert(['firstName' => $this->firstName, 'lastName' => $this->lastName, 'birthDate' => $this->birthDate, 'email' => $this->email, 'pass' => $this->pass, 'language' => $this->language, 'userType' => $this->userType]);
+        if ($this->pass == $this->pass1) {
+            $this->insert(['firstName' => $this->firstName, 'lastName' => $this->lastName, 'birthDate' => $this->birthDate, 'email' => $this->email, 'pass' => $this->pass, 'language' => $this->language, 'userType' => $this->userType]);
+        } else {
+            return "Las contraseñas no coinciden";
+        }
     }
 
 }
-$u = new user("Ot", "Trivino", "1999-11-05", "ot.trivino.calsina@gmail.com", "1234", "catalan", 1);
-$u->insert(['firstName' => 'Ot', 'lastName' => 'Trivino', 'birthDate' => "1999-11-05", 'email' => 'ot.trivino.calsina@gmail.com', 'pass' => '123d', 'interfaceLanguage' => 'catalan', 'userType' => 1]);
+
+//$u = new user("Ot", "Trivino", "1999-11-05", "ot.trivino.calsina@gmail.com", "1234", "catalan", 1);
+//$u->insert(['firstName' => 'Ot', 'lastName' => 'Trivino', 'birthDate' => "1999-11-05", 'email' => 'ot.trivino.calsina@gmail.com', 'pass' => '123d', 'interfaceLanguage' => 'catalan', 'userType' => 1]);
