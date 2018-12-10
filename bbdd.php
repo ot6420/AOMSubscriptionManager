@@ -108,11 +108,20 @@ class bbdd {
             echo $ex->getMessage();
         }
     }
-    
-    function login($user,$pass){
-    
-        $us=$this->getAll(['email'=>$user,'pass'=>$pass]);
+
+    function login($user, $pass) {
+
+        $us = $this->getAll(['email' => $user, 'pass' => $pass]);
         return !empty($us);
-}
+    }
+
+    protected function deleteById($id) {
+        try {
+            self::$conn->exec("delete from " . $this->table . " where "
+                    . $this->idField . "=" . $id);
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
 
 }
