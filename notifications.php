@@ -68,7 +68,7 @@ and open the template in the editor.
             $mail->Port = 587;                                    // TCP port to connect to
 
             $mail->setFrom($email, "$nombre $apellido");
-            $mail->addAddress('marcroigchueca@gmail.com', 'OHHMUSIC');     // Add a recipient
+            $mail->addAddress('aomsubscriptionmanager@gmail.com');     // Add a recipient
 //                $mail->addAddress('ellen@example.com');               // Name is optional
             $mail->addReplyTo($email, 'Information');
 
