@@ -43,24 +43,4 @@ $u = new subscription("Netflix", "Home", 2, "2004-11-02", 15, 2, 2.4, 1);
 
 
 //Aqui canviando el numero que está entre parentesis, podemos mostrar las suscripciones de cada usuario.
-echo toHTMLTable($u->showSubscriptions(2));
-
-
-//mostramos la tabla en html
-function toHTMLTable($tabla){
-    $res="<table><tr>";
-    foreach($tabla[0] as $clave=>$valor){
-        $res.="<th>".$clave."</th>";
-        
-    }
-    $res.="</tr>";
-    foreach($tabla as $elemento){
-        $res.="<tr>";
-        foreach($elemento as $clave=>$valor){
-            $res.="<td>".$valor."</td>";
-        }
-        $res.="<tr>";
-    }
-    $res.="</table>";
-    return $res;
-}
+echo $u->toHTMLTable($u->showSubscriptions(1));
