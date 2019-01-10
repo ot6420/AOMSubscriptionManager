@@ -42,8 +42,8 @@ $u = new subscription("Netflix", "Home", 2, "2004-11-02", 15, 2, 2.4, 1);
 //$u->insert(['subscriptionName' => 'Netflix', 'description' => 'Home', 'cycle' => 2, 'firstBill' => '2004-11-02', 'duration' => 15, 'remainMe' => 2, 'price' => 2.4, 'userID' => 1]);
 
 
-//Aqui canviando el numero que está entre parentesis, podemos mostrar las suscripciones de cada usuario.
-echo toHTMLTable($u->showSubscriptions(2));
+//Aqui cambiando el numero que está entre parentesis, podemos mostrar las suscripciones de cada usuario.
+echo toHTMLTable($u->showSubscriptions(1));
 
 
 //mostramos la tabla en html
