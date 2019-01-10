@@ -47,7 +47,7 @@ class bbdd {
         $where = "";
         $campos = " * ";
         if (!empty($condicion)) {
-            //Aquí tendré que hacer algo!!!
+//Aquí tendré que hacer algo!!!
             $where = " where 1=1 ";
             foreach ($condicion as $clave => $valor) {
                 $where .= " and " . $clave . " = '" . $valor . "' ";
@@ -76,12 +76,14 @@ class bbdd {
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
+//Función encargada de mostrar los datos de una ID en correcto
     function getById($id) {
         $res = self::$conn->query("select * from " . $this->table . " where "
                 . $this->idField . "=" . $id);
         return $res->fetch(PDO::FETCH_ASSOC);
     }
 
+//Función que se encarga de añadir valores en cualquier tabla de la base de datos
     function insert($valores) {
         try {
             $campos = join(",", array_keys($valores));
@@ -96,7 +98,7 @@ class bbdd {
 
     function update($id, $valores) {
         try {
-            //Creamos el cuerpo del select con la función array_map
+//Creamos el cuerpo del select con la función array_map
             $campos = join(",", array_map(function($v) {
                         return $v . "=:" . $v;
                     }, array_keys($valores)));
@@ -115,6 +117,7 @@ class bbdd {
         return !empty($us);
     }
 
+//Borrar un dato con un ID en concreto
     protected function deleteById($id) {
         try {
             self::$conn->exec("delete from " . $this->table . " where "
@@ -122,6 +125,24 @@ class bbdd {
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }
+    }
+
+//Función que se encarga de insetar los datos obtenidos en una consulta a la tabla
+    function toHTMLTable($tabla) {
+        $res = "<table><tr>";
+        foreach ($tabla[0] as $clave => $valor) {
+            $res .= "<th>" . $clave . "</th>";
+        }
+        $res .= "</tr>";
+        foreach ($tabla as $elemento) {
+            $res .= "<tr>";
+            foreach ($elemento as $clave => $valor) {
+                $res .= "<td>" . $valor . "</td>";
+            }
+            $res .= "<tr>";
+        }
+        $res .= "</table>";
+        return $res;
     }
 
 }

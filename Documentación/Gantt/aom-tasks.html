@@ -1,0 +1,825 @@
+<html xmlns:ganttproject="http://ganttproject.sf.net/">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GanttProject - aom</title>
+<style>
+	    A:link {
+		FONT-WEIGHT: bold;  TEXT-DECORATION: none;
+		FONT-SIZE: 14px ; COLOR: black;
+	    }
+	    A:visited {
+		FONT-WEIGHT: bold;  TEXT-DECORATION: none;
+		FONT-SIZE: 14px ; COLOR: black; BACKGROUND: none
+	    }
+	    A:hover {
+		FONT-WEIGHT: bold;  TEXT-DECORATION: none;
+		FONT-SIZE: 14px ; COLOR: white ; BACKGROUND: #6d9ec6;
+	    }
+	    .notes {
+	      padding-left: 10px;
+	    }
+	    .notes pre {
+	      font-family: Arial, Helvetica;
+	      font-size: 10px;
+	      margin-top: 0px;
+	      padding-top: 0px;
+	      margin-bottom: 5px;
+	    }
+	    .attachment {
+	      padding-left: 10px;
+	    }
+	    .attachment a:link {
+	      font-weight: normal;
+	      font-size: 12px;
+	      color: #6d9ec6;
+	      background: white;
+	    }
+	    .attachment a:hover {
+	      font-weight: normal;
+	      text-decoration: underline;
+	      font-size: 12px;
+	      color: #6d9ec6;
+	      background: white;
+	    }
+	    .attachment a:visited {
+	      font-weight: normal;
+	      font-size: 12px;
+	      background: white;
+	      color: gray;
+	    }
+	    TD {
+		FONT-SIZE: 12px; COLOR: black; FONT-STYLE: normal; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+	    }
+	    UL {
+		FONT-SIZE: 12px; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+	    }
+	    LI {
+		FONT-SIZE: 12px; FONT-FAMILY: Arial, Helvetica, Geneva, sans-serif
+	    }
+	    H1 {
+		FONT-WEIGHT: bold; FONT-SIZE: 16pt; COLOR: #6d9ec6;
+	    }
+	    H2 {
+		FONT-WEIGHT: bold; FONT-SIZE: 16pt; COLOR: #000000;
+	    }
+	    H3 {
+		FONT-WEIGHT: bold; FONT-SIZE: 13pt; COLOR: #6d9ec6;
+	    }
+	    H4 {
+		FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #000000;
+	    }
+	    H5 {
+		FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #6d9ec6;
+	    }
+	    H6 {
+		FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000000
+	    }
+
+	    </style>
+</head>
+<body bgcolor="white">
+<center>
+<style>
+div.project_name {
+  font-size: 150%;
+  color: black;
+  font-weight: bold;
+  border-top: solid #6d9ec6 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+}
+div.page_links {
+  background: #6d9ec6;
+  text-align: center;
+}
+</style>
+<center>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td bgcolor="#dddddd">
+<div class="project_name">Untitled Gantt Project</div>
+</td>
+</tr>
+<tr>
+<td>
+<div class="page_links">
+<a href="aom.html"></a>  |
+          <a href="aom-chart.html">Gantt</a> |
+          <a href="aom-tasks.html">Tarea</a> |
+          <a href="aom-resources.html">Recursos</a>
+</div>
+</td>
+</tr>
+</table>
+</center>
+<br>
+<style>
+td.header {
+  background: #dddddd;
+  margin: 0;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 2px;
+  padding-bottom:1px;
+  border-bottom: solid black 2px;
+}
+td.cell {
+  margin: 0;
+  margin-top: 2px;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 2px;
+  padding-bottom:1px;
+}
+div.cell {
+}
+h5.header {
+  margin-left: 2px;
+  margin-top: 2px;
+}
+</style>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="top" class="header">
+<h5 class="header">Nombre</h5>
+</td><td valign="top" class="header">
+<h5 class="header">Fecha de inicio</h5>
+</td><td valign="top" class="header">
+<h5 class="header">Fecha de fin</h5>
+</td><td valign="top" class="header">
+<h5 class="header">Recursos</h5>
+</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Fase 1 - Selecci&oacute;n</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/09/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">5/10/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Selecci&oacute;n del proyecto</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/09/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/09/18</div>
+</div>
+</td><td valign="top" class="cell">Ot Trivi&ntilde;o, Arnau Canal, Marc Roig</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Documentaci&oacute;n sobre el proyecto</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/09/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">5/10/18</div>
+</div>
+</td><td valign="top" class="cell">Ot Trivi&ntilde;o, Arnau Canal, Marc Roig</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Fase 2 - Dise&ntilde;o</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">8/10/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">28/11/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Dise&ntilde;o de la BBDD</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">8/10/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">12/10/18</div>
+</div>
+</td><td valign="top" class="cell">Ot Trivi&ntilde;o</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Diagrama UML</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">15/10/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/10/18</div>
+</div>
+</td><td valign="top" class="cell">Ot Trivi&ntilde;o, Arnau Canal</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Wireframes de baja fidelidad</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/10/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">26/10/18</div>
+</div>
+</td><td valign="top" class="cell">Arnau Canal</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Wireframes de alta fidelidad</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">16/11/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">28/11/18</div>
+</div>
+</td><td valign="top" class="cell">Arnau Canal</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Fase 3 - Planificaci&oacute;n</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">13/11/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">28/11/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Github back-end (assignaci&oacute;n de tareas)</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">13/11/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">15/11/18</div>
+</div>
+</td><td valign="top" class="cell">Ot Trivi&ntilde;o</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Github front-end (assignaci&oacute;n de tareas)</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">19/11/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">20/11/18</div>
+</div>
+</td><td valign="top" class="cell">Arnau Canal</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Diagrama de Gantt</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">19/11/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">28/11/18</div>
+</div>
+</td><td valign="top" class="cell">Ot Trivi&ntilde;o</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Fase 4 - Implementaci&oacute;n</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">16/11/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">1/03/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">4.1 - Back-End</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">16/11/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">1/03/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">BBDD</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">16/11/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">23/11/18</div>
+</div>
+</td><td valign="top" class="cell">Marc Roig</td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">Login</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">29/11/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">5/12/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">Modificar / eliminar suscripciones</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/12/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">21/12/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">Modificar / eliminar datos de perfil</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/12/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">21/12/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">Coste suscripciones</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">7/01/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/01/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">Funci&oacute;n encaragada de enviar las notificaciones al mail</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">28/01/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">11/02/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">Encriptar / Desencriptar las contrase&ntilde;as</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">12/02/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">15/02/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">Publicaci&oacute;n de la primera beta en el servidor</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">26/02/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">1/03/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">4.2 - Front-End</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">29/11/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/01/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">P&aacute;gina de login y home del usuario</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">29/11/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">5/12/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">P&aacute;gina de modificar / eliminar suscripiones</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/12/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">21/12/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">P&aacute;gina modificar / borrar datos de perfil</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/12/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">21/12/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:1em">
+<div style="margin: 0; padding: 0;">Gr&aacute;fica coste suscripciones</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">7/01/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/01/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Fase 5 - Pruebas</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">28/11/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">2/04/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Probar formulario de registro</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">28/11/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">29/11/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Probar login</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">5/12/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">7/12/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Probar a&ntilde;adir suscripci&oacute;n</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">13/12/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/12/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Probar modificar suscripci&oacute;n</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/12/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">17/12/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Probar modificar datos de perfil</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">21/12/18</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">24/12/18</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Probar grafica coste suscripciones</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">15/01/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/01/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Probar servicio de enviar las notificaciones al mail</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">12/02/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">13/02/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Comprobar funci&oacute;n encriptar / desencriptar contrase&ntilde;as</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/02/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">18/02/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Comprobar correcto funcionamiento del c&oacute;digo en el servidor</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">1/03/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">5/03/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Testear la plataforma en un grupo de usuarios que no hayan usado nunca dicha plataforma</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">6/03/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">13/03/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Correci&oacute;n de fallos encontrados por los usuarios</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">14/03/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">27/03/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Testear la plataforma en un grupo de usuarios que no hayan usado nunca dicha plataforma que no hayan usado nunca dicha plataforma</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">28/03/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">2/04/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0em">
+<div style="margin: 0; padding: 0;">Fase 6 - Presentaci&oacute;n</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">4/04/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">26/04/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">V&iacute;deo</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">4/04/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">12/04/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">PowePoint</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">15/04/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">19/04/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+<tr>
+<td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">Memoria</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">22/04/19</div>
+</div>
+</td><td valign="top" class="cell">
+<div style="margin:0; padding:0; padding-left:0.5em">
+<div style="margin: 0; padding: 0;">26/04/19</div>
+</div>
+</td><td valign="top" class="cell"></td>
+</tr>
+</table>
+</center>
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td bgcolor="#6d9ec6" width="50%"><font color="#FFFFFF"><b>Ganttproject (2.8.9 Pilsen (build 2335))</b></font></td><td bgcolor="#6d9ec6" width="50%" align="right"><b><a href="http://ganttproject.biz">ganttproject.biz</a></b>
+<br>
+<b>17/12/18 - 3:44:15</b></td>
+</tr>
+</table>
+</body>
+</html>
