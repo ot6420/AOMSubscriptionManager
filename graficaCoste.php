@@ -32,36 +32,45 @@ $valoresArray[$i]= $rawdata[$i][1];
 
 <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Importo el archivo Javascript de Highcharts directamente desde su servidor -->
-<script src="http://code.highcharts.com/stock/highstock.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script>
 
-chartCPU = new Highcharts.StockChart({
-    chart: {
-        renderTo: 'contenedor'
-        //defaultSeriesType: 'spline'
-
-    },
-    rangeSelector : {
-        enabled: false
-    },
+Highcharts.chart('contenedor',{
+   chart: {
+      
+    type: 'column'
+  },
+  title: {
+    text: 'GRÁFICA DE COSTES'
+  },
+  subtitle: {
+    text: 'AOM SUBSCRIPTION MANAGER'
+  },
+  xAxis: {
+    type: 'category',
+    labels: {
+      rotation: -45,
+      style: {
+        fontSize: '13px',
+        fontFamily: 'Verdana, sans-serif'
+      }
+    }
+  },
+  yAxis: {
+    min: 0,
     title: {
-        text: 'Gráfica de Costes'
-    },
-    xAxis: {
-        categories:['<?=implode("','",$timeArray)?>']
-        //tickPixelInterval: 150,
-        //maxZoom: 20 * 1000
-    },
-    yAxis: {
-        minPadding: 0.2,
-        maxPadding: 0.2,
-        title: {
-            text: 'Precio',
-            margin: 10
-        }
-    },
-    series: [{
+      text: 'Precio (Euros)'
+    }
+  },
+  legend: {
+    enabled: false
+  },
+  tooltip: {
+    pointFormat: 'Precio: <b>{point.y:.1f} Euros</b>'
+  },
+  series: [{
         name: 'Precio',
         data: (function() {
                 // generate an array of random data
@@ -72,11 +81,20 @@ chartCPU = new Highcharts.StockChart({
                 data.push(['<?php echo $timeArray[$i];?>',<?php echo $valoresArray[$i];?>]);
                 <?php } ?>
                 return data;
-            })()
-    }],
-    credits: {
-            enabled: false
+            })(),
+    dataLabels: {
+      enabled: true,
+      rotation: -90,
+      color: 'black',
+      align: 'right',
+      format: '{point.y:.1f}', // one decimal
+      y: 10, // 10 pixels down from the top
+      style: {
+        fontSize: '13px',
+        fontFamily: 'Verdana, sans-serif'
+      }
     }
+  }]
 });
 
 </script>   
