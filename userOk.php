@@ -20,7 +20,7 @@ class userOk extends Tabla {
         parent::__construct("Users", "userID", $fields, $show);
     }
 
-    function getIdUser() {
+    function getUserID() {
         return $this->userID;
     }
 
@@ -56,7 +56,7 @@ class userOk extends Tabla {
         return $this->userType;
     }
 
-    function setIdUser($userID) {
+    function setUserID($userID) {
         $this->userID = $userID;
     }
 
@@ -110,17 +110,6 @@ class userOk extends Tabla {
         }
     }
 
-//    function getAlumnoByCentro($id){
-//        $alumnos=$this->getAll(['idcentro'=>$id]);
-//        //Convertirlo en un array de objetos Alumno
-//        $obj_al=[];
-//        foreach ($alumnos as $a){
-//        $alumno=new Alumno();
-//        $alumno->load($a['idalumno']);
-//        $obj_al[]=$alumno;
-//        }
-//        return $obj_al;
-//    }
     function load($id) {
         $user = $this->getById($id);
 
@@ -178,31 +167,3 @@ class userOk extends Tabla {
     }
 
 }
-
-$user = new userOk();
-echo $user->toHTMLTable($user->showUserData(2));
-$user->load(2);
-?>
-<form method="POST">
-    <label for="nombre">Nombre:</label>
-    <input type="text" class="form-control" id="idalumno" name="firstName" value="<?= $user->firstName ?>">
-    <div class="form-group">
-        <label for="nombre">Apellidos:</label>
-        <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $user->lastName ?>">
-    </div>
-    <div class="form-group">
-        <label for="nombre">Fecha de Nacimiento:</label>
-        <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $user->birthDate ?>">
-    </div>
-    <div class="form-group">
-        <label for="mail">Email:</label>
-        <input type="text" class="form-control" id="mail"  name="mail" value="<?= $user->email ?>">
-    </div>
-    <div class="form-group">
-        <label for="mail">Lenguaje de la interfaz:</label>
-        <input type="text" class="form-control" id="mail"  name="mail" value="<?= $user->interfaceLanguage ?>">
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
-</form>
-
-<?php ?>
