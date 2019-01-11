@@ -12,19 +12,19 @@ $rand = new RandomTable();
 
 //obtenemos toda la información de la tabla random
 $rawdata = $rand->getAllInfo();
-print_r($rawdata);
+
 //nos creamos dos arrays para almacenar el tiempo y el valor numérico
 $valoresArray;
 $timeArray;
 //en un bucle for obtenemos en cada iteración el valor númerico y 
 //el TIMESTAMP del tiempo y lo almacenamos en los arrays 
 for($i = 0 ;$i<count($rawdata);$i++){
-    $valoresArray[$i]= $rawdata[$i][1];
+$valoresArray[$i]= $rawdata[$i][1];
     //OBTENEMOS EL TIMESTAMP
-    $time= $rawdata[$i][2];
-    $date = new DateTime($time);
+//    $time= $rawdata[$i][2];
+//    $date = new DateTime($time);
     //ALMACENAMOS EL TIMESTAMP EN EL ARRAY
-    $timeArray[$i] = $date->getTimestamp()*1000;
+    $timeArray[$i] = $rawdata[$i][0];;
 }
 
 ?>
@@ -46,10 +46,10 @@ chartCPU = new Highcharts.StockChart({
         enabled: false
     },
     title: {
-        text: 'Gráfica'
+        text: 'Gráfica de Costes'
     },
     xAxis: {
-        type: 'datetime'
+        categories:['<?=implode("','",$timeArray)?>']
         //tickPixelInterval: 150,
         //maxZoom: 20 * 1000
     },
@@ -57,19 +57,19 @@ chartCPU = new Highcharts.StockChart({
         minPadding: 0.2,
         maxPadding: 0.2,
         title: {
-            text: 'Valores',
+            text: 'Precio',
             margin: 10
         }
     },
     series: [{
-        name: 'valor',
+        name: 'Precio',
         data: (function() {
                 // generate an array of random data
                 var data = [];
                 <?php
                     for($i = 0 ;$i<count($rawdata);$i++){
                 ?>
-                data.push([<?php echo $timeArray[$i];?>,<?php echo $valoresArray[$i];?>]);
+                data.push(['<?php echo $timeArray[$i];?>',<?php echo $valoresArray[$i];?>]);
                 <?php } ?>
                 return data;
             })()

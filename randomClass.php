@@ -71,7 +71,7 @@ class RandomTable{
     }
     function getAllInfo(){
         //Creamos la consulta
-        $sql = "Select price from Subscription where userID=1;";
+        $sql = "Select subscriptionName,price from Subscription where userID=1;";
         //obtenemos el array con toda la información
         return $this->getArraySQL($sql);
     }
