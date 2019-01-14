@@ -15,9 +15,9 @@
                 <h1>Editar datos de perfil</h1>
             </div>
             <?php
-            require_once 'userOk.php';
-            require_once 'languagesOk.php';
-            require_once 'tabla.php';
+            require_once 'class/userClass.php';
+            require_once 'class/languageClass.php';
+            require_once 'class/tablaClass.php';
             
             $server = "localhost";
             $user = "root";
@@ -52,10 +52,10 @@
 
                 if (!empty($id)) {
                     
-                    $userFind = new userOk();
+                    $userFind = new userClass();
                     $userFind->load($id);
                     
-                    $languageFind = new languagesOk();
+                    $languageFind = new languageClass();
                     $languageFind->load($userFind->interfaceLanguage);
                     
                     $sqlLanguages = "select * from Languages";

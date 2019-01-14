@@ -1,7 +1,7 @@
 <?php
-require_once 'tabla.php';
+require_once 'tablaClass.php';
 
-class subscriptionOk extends Tabla {
+class subscriptionClass extends Tabla {
 
     private $subscriptionID;
     private $subscriptionName;

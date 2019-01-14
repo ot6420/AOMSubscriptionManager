@@ -1,7 +1,7 @@
 <?php
-require_once 'tabla.php';
+require_once 'tablaClass.php';
 
-class userOk extends Tabla {
+class userClass extends Tabla {
 
     private $userID;
     private $firstName;

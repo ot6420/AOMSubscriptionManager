@@ -15,8 +15,8 @@
                 <h1>Editar datos de la suscripción</h1>
             </div>
             <?php
-            require_once 'subscriptionOk.php';
-            require_once 'tabla.php';
+            require_once 'class/subscriptionClass.php';
+            require_once 'class/tablaClass.php';
             
             $server = "localhost";
             $user = "root";
@@ -52,7 +52,7 @@
 
                 if (!empty($id)) {
                     
-                    $subscriptionFind = new subscriptionOk();
+                    $subscriptionFind = new subscriptionClass();
                     $subscriptionFind->load($id);
                     
                     if (!empty($subscriptionFind)) {
