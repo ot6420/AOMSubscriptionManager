@@ -15,6 +15,9 @@
                 <h1>Editar datos de la suscripción</h1>
             </div>
             <?php
+            require_once 'class/subscriptionClass.php';
+            require_once 'class/tablaClass.php';
+            
             $server = "localhost";
             $user = "root";
             $password = "";
@@ -36,50 +39,50 @@
                 $remainMe = filter_input(INPUT_POST, "remainMe", FILTER_VALIDATE_INT);
                 $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT);
                 $subscriptionID = filter_input(INPUT_POST, "subscriptionID", FILTER_VALIDATE_INT);
-                if (!empty($firstName) && !empty($lastName) && !empty($subscriptionID)) {
-                    $sql = "update Subscription set subscriptionName='$subscriptionName', lastName='$lastName', birthDate='$birthDate', email='$email', interfaceLanguage='$interfaceLanguage' where subscriptionID=$subscriptionID";
+                if (!empty($subscriptionName) && !empty($cycle) && !empty($subscriptionID)) {
+                    $sql = "update Subscription set subscriptionName='$subscriptionName', description='$description', cycle=$cycle, firstBill='$firstBill', renainMe=$remainMe, price='$price' where subscriptionID=$subscriptionID";
                     if ($conn->exec($sql)) {
                         ?>
                         <div class="alert alert-success">
-                            <strong>Correcto: </strong> Alumno editado .
+                            <strong>Correcto: </strong> Suscripción editada .
                         </div>
                         <?php
                     }
                 }
 
                 if (!empty($id)) {
-                    $sql = "select * from Subscription where subscriptionID = $id";
-                    $res = $conn->query($sql);
-                    $subscription = $res->fetch();
                     
-                    if (!empty($user)) {
+                    $subscriptionFind = new subscriptionClass();
+                    $subscriptionFind->load($id);
+                    
+                    if (!empty($subscriptionFind)) {
                         ?>
 
                         <form method="POST">
-                            <input type="hidden" class="form-control" id="subscriptionID" name="subscriptionID" value="<?= $subscription['subscriptionID'] ?>">
+                            <input type="hidden" class="form-control" id="subscriptionID" name="subscriptionID" value="<?= $subscriptionFind->subscriptionID ?>">
                             <div class="form-group">
                                 <label for="subscriptionName">Nombre:</label>
-                                <input type="text" class="form-control" id="subscriptionName" name="subscriptionName" value="<?= $subscription['subscriptionName'] ?>" disabled>
+                                <input type="text" class="form-control" id="subscriptionName" name="subscriptionName" value="<?= $subscriptionFind->subscriptionName ?>" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="description">Descripción:</label>
-                                <input type="text" class="form-control" id="description"  name="description" value="<?= $subscription['description'] ?>">
+                                <input type="text" class="form-control" id="description"  name="description" value="<?= $subscriptionFind->description ?>">
                             </div>
                             <div class="form-group">
                                 <label for="cycle">Ciclo de pago:</label>
-                                <input type="number" class="form-control" id="cycle"  name="cycle" value="<?= $subscription['cycle'] ?>">
+                                <input type="number" class="form-control" id="cycle"  name="cycle" value="<?= $subscriptionFind->cycle ?>">
                             </div>
                             <div class="form-group">
                                 <label for="firstBill">Primera factura:</label>
-                                <input type="date" class="form-control" id="firstBill"  name="firstBill" value="<?= $subscription['firstBill'] ?>">
+                                <input type="date" class="form-control" id="firstBill"  value="<?= $subscriptionFind->firstBill ?>">
                             </div>
                             <div class="form-group">
                                 <label for="remainMe">Notificación de recordatorio:</label>
-                                <input type="number" class="form-control" id="remianMe"  name="remainMe" value="<?= $subscription['remainMe'] ?>">
+                                <input type="number" class="form-control" id="remianMe"  name="remainMe" value="<?= $subscriptionFind->remainMe ?>">
                             </div>
                             <div class="form-group">
                                 <label for="price">Coste:</label>
-                                <input type="number" class="form-control" id="price"  name="price" value="<?= $subscription['price'] ?>">
+                                <input type="number" class="form-control" id="price"  name="price" value="<?= $subscriptionFind->price ?>">
                             </div>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>

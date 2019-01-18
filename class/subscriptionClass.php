@@ -1,7 +1,7 @@
 <?php
-require_once 'tabla.php';
+require_once 'tablaClass.php';
 
-class subscription extends Tabla {
+class subscriptionClass extends Tabla {
 
     private $subscriptionID;
     private $subscriptionName;
@@ -177,35 +177,3 @@ class subscription extends Tabla {
     }
 
 }
-
-$subscription = new subscription();
-echo $subscription->toHTMLTable($subscription->showSubscriptionData(2));
-$subscription->load(2);
-?>
-<form method="POST">
-    <label for="subscriptionName">Nombre de la subscripcion:</label>
-    <input type="text" class="form-control" id="subscriptionName" name="subscriptionName" value="<?= $subscription->subscriptionName ?>" disabled>
-    <div class="form-group">
-        <label for="description">Descripción:</label>
-        <input type="text" class="form-control" id="description" name="description" value="<?= $subscription->description ?>">
-    </div>
-    <div class="form-group">
-        <label for="cycle">Ciclo de pago:</label>
-        <input type="text" class="form-control" id="cycle" name="cycle" value="<?= $subscription->cycle ?>">
-    </div>
-    <div class="form-group">
-        <label for="firstBill">Primer pago:</label>
-        <input type="date" class="form-control" id="firstBill"  name="firstBill" value="<?= $subscription->firstBill ?>">
-    </div>
-    <div class="form-group">
-        <label for="remainMe">Notificación de recordatorio:</label>
-        <input type="number" class="form-control" id="remainMe"  name="remainMe" value="<?= $subscription->remainMe ?>">
-    </div>
-    <div class="form-group">
-        <label for="price">Coste:</label>
-        <input type="text" class="form-control" id="price"  name="price" value="<?= $subscription->price ?>">
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
-</form>
-
-<?php ?>
