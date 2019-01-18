@@ -51,7 +51,7 @@ and open the template in the editor.
 
 
            
-        require 'phpmailer/src/Exception.php';
+            require 'phpmailer/src/Exception.php';
             require 'phpmailer/src/PHPMailer.php';
             require 'phpmailer/src/SMTP.php';
 
@@ -89,6 +89,12 @@ and open the template in the editor.
             }
         }
         ?>
+        
+        
+        
+        
+<!--        CONSULTA SQL: SELECT * from Subscription join users on Subscription.userID=users.userid
+where date_add(DATE_ADD(firstBill, INTERVAL duration MONTH) , interval remainme day) >= curdate() -->
      
     </body>
 </html>
