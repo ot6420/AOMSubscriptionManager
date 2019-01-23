@@ -18,18 +18,7 @@
             <?php
             require_once 'class/subscriptionClass.php';
             require_once 'class/tablaClass.php';
-            
-            $server = "localhost";
-            $user = "root";
-            $password = "";
-            $db = "AOM";
-            try {
 
-                $conn = new PDO("mysql:host=$server;dbname=$db", $user, $password);
-
-//Con esta línea indicamos que si hay algún error se trate como una excepción
-
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
                 $id = 2;
 
@@ -96,9 +85,6 @@
                     ?><p>Falta el id</p>
                     <?php
                 }
-            } catch (PDOException $e) {
-                echo "Connection failed: " . $e->getMessage();
-            }
             ?>
         </div>
     </body>
