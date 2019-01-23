@@ -8,11 +8,10 @@ class subscriptionClass extends Tabla {
     private $description;
     private $cycle;
     private $firstBill;
-    private $duration;
     private $remainMe;
     private $price;
     private $userID;
-    private $num_fields = 9;
+    private $num_fields = 8;
 
     function __construct() {
         $show = ["subscriptionName"];
@@ -38,10 +37,6 @@ class subscriptionClass extends Tabla {
 
     function getFirstBill() {
         return $this->firstBill;
-    }
-
-    function getDuration() {
-        return $this->duration;
     }
 
     function getRemainMe() {
@@ -78,10 +73,6 @@ class subscriptionClass extends Tabla {
 
     function setFirstBill($firstBill) {
         $this->firstBill = $firstBill;
-    }
-
-    function setDuration($duration) {
-        $this->duration = $duration;
     }
 
     function setRemainMe($remainMe) {
@@ -127,7 +118,6 @@ class subscriptionClass extends Tabla {
             $this->description = $user['description'];
             $this->cycle = $user['cycle'];
             $this->firstBill = $user['firstBill'];
-            $this->duration = $user['duration'];
             $this->remainMe = $user['remainMe'];
             $this->price = $user['price'];
             $this->userID = $user['userID'];
@@ -144,7 +134,6 @@ class subscriptionClass extends Tabla {
             $this->description = null;
             $this->cycle = null;
             $this->firstBill = null;
-            $this->duration = null;
             $this->remainMe = null;
             $this->price = null;
             $this->userID = null;
