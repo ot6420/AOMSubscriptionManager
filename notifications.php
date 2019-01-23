@@ -12,27 +12,25 @@ and open the template in the editor.
     <body>
         <?php
          use PHPMailer\PHPMailer\PHPMailer;
-            use PHPMailer\PHPMailer\Exception;
+          use PHPMailer\PHPMailer\Exception;
 
-        if (!isset($_POST['Enviar'])) {
-            ?>
+        
+            
 
         
 
      
                                     
                         
-            <?php
-        } else {
+            $server = "localhost";
+            $user = "root";
+            $password = "";
+            $db = "AOM";
+       
 
 
 
-            $nombre = $_POST['first_name'];
-            $apellido = $_POST['last_name'];
-            $email = $_POST['email'];
-            $telephone = $_POST['telephone'];
-            $message = $_POST['message'];
-
+            
 
 
             //AQUI EMPIEZA EL PHP MAILER
@@ -77,7 +75,7 @@ and open the template in the editor.
             } else {
                 echo 'Mensaje enviado correctamente';
             }
-        }
+        
         ?>
         
         
