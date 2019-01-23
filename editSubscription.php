@@ -1,4 +1,5 @@
-<html><head>
+<html>
+    <head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -37,22 +38,20 @@
                 $cycle = filter_input(INPUT_POST, "cycle", FILTER_VALIDATE_INT);
                 $firstBill = filter_input(INPUT_POST, "firstBill", FILTER_SANITIZE_STRING);
                 $remainMe = filter_input(INPUT_POST, "remainMe", FILTER_VALIDATE_INT);
-                $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT);
+                $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT);
                 $subscriptionID = filter_input(INPUT_POST, "subscriptionID", FILTER_VALIDATE_INT);
                 
                 $subscription = new subscriptionClass();
                 $subscription->load($id);
-              
-                if (!empty($description) && !empty($cycle) && !empty($firstBill) && !empty($subscriptionName) && !empty($remainMe) && !empty($price)) {
-                    //$sql = "update Subscription set subscriptionName='$subscriptionName', description='$description', cycle=$cycle, firstBill='$firstBill', renainMe=$remainMe, price='$price' where subscriptionID=$subscriptionID";
-                    //$subscription->subscriptionName=$subscriptionName;
+
+                if (!empty($description) && !empty($cycle) && !empty($firstBill) && !empty($remainMe) && !empty($price)) {
                     $subscription->description=$description;
                     $subscription->cycle=$cycle;
                     $subscription->firstBill=$firstBill;
-                    $subscription->subscriptionName=$subscriptionName;
                     $subscription->remainMe=$remainMe;
                     $subscription->price=$price;
                     $subscription->save();
+                    echo "Datos actualizados correctamente";
                 }
 
                 if (!empty($id)) {
@@ -76,7 +75,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="firstBill">Primera factura:</label>
-                                <input type="date" class="form-control" id="firstBill"  value="<?= $subscription->firstBill ?>">
+                                <input type="date" class="form-control" id="firstBill" name="firstBill"  value="<?= $subscription->firstBill ?>">
                             </div>
                             <div class="form-group">
                                 <label for="remainMe">Notificación de recordatorio:</label>
