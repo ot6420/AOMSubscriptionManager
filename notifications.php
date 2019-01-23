@@ -17,19 +17,9 @@ and open the template in the editor.
         if (!isset($_POST['Enviar'])) {
             ?>
 
+        
 
-
-            <FORM METHOD="POST" id="contacto"> 
-
-                <label for="first_name">Nombre</label> <INPUT type="text" size=36 name="first_name" required=""></INPUT> 
-                <label for="last_name">Apellido</label> <INPUT type="text" size=36 name="last_name" required=""></INPUT> 
-                <label for="email">E-mail</label> <INPUT type="email" size=36 name="email" required=""></INPUT> 
-                <label for="telephone">Telefono</label> <INPUT type="tel" size=36 name="telephone"required=""></INPUT> 
-                <label for="message">Mensaje</label> <TEXTAREA rows=5 cols=30 name="message"required=""></TEXTAREA> 
-            <br>
-            <INPUT type="reset" value="Borrar"> <INPUT type="submit" value="Enviar" name="Enviar">
-             
-            </FORM> 
+     
                                     
                         
             <?php
