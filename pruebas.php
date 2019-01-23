@@ -18,7 +18,7 @@
             require_once 'class/userClass.php';
             require_once 'class/languageClass.php';
             require_once 'class/tablaClass.php';
-
+            
             $server = "localhost";
             $user = "root";
             $password = "";
@@ -31,7 +31,7 @@
 
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-                $id = 4;
+                $id = 2;
 
                 $firstName = filter_input(INPUT_POST, "firstName", FILTER_SANITIZE_STRING);
                 $lastName = filter_input(INPUT_POST, "lastName", FILTER_SANITIZE_STRING);
@@ -39,62 +39,73 @@
                 $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
                 $interfaceLanguage = filter_input(INPUT_POST, "interfaceLanguage", FILTER_SANITIZE_STRING);
                 $userID = filter_input(INPUT_POST, "userID", FILTER_VALIDATE_INT);
-
-                $user1 = new userClass();
-                $user1->load($id);
-                $languageFind = new languageClass();
-                $languageFind->load($user1->interfaceLanguage);
-
-                if (!empty($firstName) && !empty($lastName) && !empty($birthDate) && !empty($email)) {
-                    //$sql = "update Users set firstName='$firstName', lastName='$lastName', birthDate='$birthDate', email='$email', interfaceLanguage='$interfaceLanguage' where userID=$userID";
-                    $user1->firstName=$firstName;
-                    $user1->lastName=$lastName;
-                    $user1->birthDate=$birthDate;
-                    $user1->email=$email;
-                    $user1->interfaceLanguage=$interfaceLanguage;
-                    $user1->save();
+//                
+//                $userUpdate=new userClass();
+//                $userUpdate->load(2);
+//                $userUpdate->firstName=$firstName;
+//                $userUpdate->lastName=$lastName;
+//                $userUpdate->birthDate=$birthDate;
+//                $userUpdate->email=$email;
+//                $userUpdate->interfaceLanguage='1';
+//                $userUpdate->save();
+//                
+                if (!empty($firstName) && !empty($lastName) && !empty($birthDate) && !empty($email) && !empty($interfaceLanguage) && !empty($userID)) {
+                    $sql = "update Users set firstName='$firstName', lastName='$lastName', birthDate='$birthDate', email='$email', interfaceLanguage='$interfaceLanguage' where userID=$userID";
+                    if ($conn->exec($sql)) {
+                        ?>
+                        <div class="alert alert-success">
+                            <strong>Correcto: </strong> Usuario editado .
+                        </div>
+                        <?php
+                    }
                 }
 
                 if (!empty($id)) {
-                   
-                      $sqlLanguages = "select * from Languages";
-                      $resLanguages = $conn->query($sqlLanguages);
-                      $language = $resLanguages->fetchAll(); 
-                    if (!empty($user1)) {
+                    
+                    $userFind = new userClass();
+                    $userFind->load(2);
+                    print_r($userFind);
+                    
+                    $languageFind = new languageClass();
+                    $languageFind->load($userFind->interfaceLanguage);
+                    
+                    $sqlLanguages = "select * from Languages";
+                    $resLanguages = $conn->query($sqlLanguages);
+                    $language = $resLanguages->fetchAll();
+                    
+                    if (!empty($userFind)) {
                         ?>
-
+            
                         <form method="POST">
-                            <input type="hidden" class="form-control" id="userID" name="userID" value="<?= $user1->userID ?>">
+                            <input type="hidden" class="form-control" id="userID" name="userID" value="<?= $userFind->userID ?>">
                             <div class="form-group">
                                 <label for="firstName">Nombre:</label>
-                                <input type="text" class="form-control" id="firstName" name="firstName" value="<?= $user1->firstName ?>">
+                                <input type="text" class="form-control" id="firstName" name="firstName" value="<?= $userFind->firstName ?>">
                             </div>
                             <div class="form-group">
                                 <label for="lastName">Apellidos:</label>
-                                <input type="text" class="form-control" id="lastName"  name="lastName" value="<?= $user1->lastName ?>">
+                                <input type="text" class="form-control" id="lastName"  name="lastName" value="<?= $userFind->lastName ?>">
                             </div>
                             <div class="form-group">
                                 <label for="birthDate">Fecha de nacimiento:</label>
-                                <input type="date" class="form-control" id="birthDate"  name="birthDate" value="<?= $user1->birthDate ?>">
+                                <input type="date" class="form-control" id="birthDate"  name="birthDate" value="<?= $userFind->birthDate ?>">
                             </div>
                             <div class="form-group">
                                 <label for="email">Correo electrónico:</label>
-                                <input type="email" class="form-control" id="email"  name="email" value="<?= $user1->email ?>">
+                                <input type="email" class="form-control" id="email"  name="email" value="<?= $userFind->email ?>">
                             </div>
                             <div class="form-group">
                                 <label for="interfaceLanguage">Lenguaje de la interfaz:</label>
                                 <select name="interfaceLanguage" id="interfaceLanguage">
-                                    <option value="<?= $languageFind->languageID ?>" selected><?php echo $languageFind->languageName; ?></option>
-                                    <?php
-                                    foreach ($language as $x) {
-                                        if($languageFind->languageID != $x['languageID']) {
-                                        ?>
-                                        <option value="<?php echo $x['languageID']; ?>"><?php echo $x['languageName']; ?></option>
-                                        <?php
-                                    }
-                                    }
-                                    ?>
-                                </select>
+                                    <option value="<?= $languageFind->languageID ?>" selected><?php echo $languageFind->languageName;?></option>
+                            <?php
+                                foreach($language as $x) {
+                            ?>
+                                    <option value="<?php echo $x['languageName'];?>"><?php echo $x['languageName'];?></option>
+                            <?php
+                                }
+                            ?>
+                            </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </form>
@@ -104,7 +115,7 @@
                         <?php
                     }
                 } else {
-                    ?><p>Inicie sesión para continuar...</p>
+                    ?><p>inicie sesión para continuar...</p>
                     <?php
                 }
             } catch (PDOException $e) {
