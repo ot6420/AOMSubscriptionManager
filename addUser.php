@@ -24,13 +24,14 @@
             $birthDate = filter_input(INPUT_POST, "birthDate", FILTER_SANITIZE_STRING);
             $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
             $pass = filter_input(INPUT_POST, "pass", FILTER_SANITIZE_STRING);
+            $pass1 = filter_input(INPUT_POST, "pass1", FILTER_SANITIZE_STRING);
             $interfaceLanguage = filter_input(INPUT_POST, "interfaceLanguage", FILTER_SANITIZE_STRING);
             $userID = filter_input(INPUT_POST, "userID", FILTER_VALIDATE_INT);
 
             $user1 = new userClass();
-
+            
+            if ($pass == $pass1) {
             if (!empty($firstName) && !empty($lastName) && !empty($birthDate) && !empty($email)) {
-
                 $user1->firstName = $firstName;
                 $user1->lastName = $lastName;
                 $user1->birthDate = $birthDate;
@@ -39,7 +40,11 @@
                 $user1->interfaceLanguage = $interfaceLanguage;
                 $user1->userType = 1;
                 $user1->save();
+                echo "Usuario registrado correctamente";
             }
+        } else {
+            echo "Las contraseñas no coinciden";
+        }
 
             $language = "catalan";
             ?>
@@ -65,6 +70,10 @@
                 <div class="form-group">
                     <label for="pass">Contraseña:</label>
                     <input type="password" class="form-control" id="pass"  name="pass" value="<?= $user1->pass ?>">
+                </div>
+                <div class="form-group">
+                    <label for="pass1">Repetir contraseña:</label>
+                    <input type="password" class="form-control" id="pass1"  name="pass1">
                 </div>
                 <div class="form-group">
                     <label for="interfaceLanguage">Lenguaje de la interfaz:</label>
