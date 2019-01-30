@@ -32,11 +32,12 @@
             
             if ($pass == $pass1) {
             if (!empty($firstName) && !empty($lastName) && !empty($birthDate) && !empty($email)) {
+                $passEncrypted = password_hash ($pass,PASSWORD_DEFAULT);
                 $user1->firstName = $firstName;
                 $user1->lastName = $lastName;
                 $user1->birthDate = $birthDate;
                 $user1->email = $email;
-                $user1->pass = $pass;
+                $user1->pass = $passEncrypted;
                 $user1->interfaceLanguage = $interfaceLanguage;
                 $user1->userType = 1;
                 $user1->save();
