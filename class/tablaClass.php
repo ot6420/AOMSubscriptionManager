@@ -204,4 +204,8 @@ abstract class Tabla {
         return $res;
     }
 
+    function serialize() {
+        return $this->valores();
+    }
+
 }
