@@ -142,7 +142,7 @@ class subscriptionClass extends Tabla {
         }
     }
 
-    private function valores() {
+    function valores() {
         $valores = array_map(function($v) {
             return $this->$v;
         }, $this->fields);

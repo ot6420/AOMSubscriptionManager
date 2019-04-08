@@ -5,18 +5,18 @@ require_once 'response.php';
 
 $controller = filter_input(INPUT_GET, "controller");
 $ruta = "../class/";
-/*$controller = "user";
-print_r( "../class/".$controller."Class.php");*/
+/* $controller = "user";
+  print_r( "../class/".$controller."Class.php"); */
 $id = filter_input(INPUT_GET, "id");
 $verbo = $_SERVER['REQUEST_METHOD'];
 $http = new HTTP();
-if (empty($controller) || !file_exists($ruta.$controller."Class.php")) {
+if (empty($controller) || !file_exists($ruta . $controller . "Class.php")) {
     $http = new HTTP();
     $http->setHttpHeaders(400, new Response("Bad request"));
     die();
 }
-require $ruta.$controller."Class.php";
-$c= $controller."Class";
+require $ruta . $controller . "Class.php";
+$c = $controller . "Class";
 $objeto = new $c;
 switch ($verbo) {
     case 'GET':
@@ -52,21 +52,17 @@ switch ($verbo) {
         break;
     case 'PUT':
 
-        $datos = file_get_contents("php://input");
-        $centro = json_decode($datos);
-        if (!empty($centro)) {
-            if (!empty($id)) {
-                $message->data = ['id' => $id, 'Antiguo' => $_SESSION['bd'][$tabla][$id], 'Nuevo' => $centro->nombre];
-                $_SESSION['bd'][$tabla][$id] = $centro->nombre;
-                $message->result = "Ok";
-            } else {
-                $message->result = "Error, falta id";
-                $message->data = null;
-            }
-        } else {
-            $message->result = "Error, falta datos";
-            $message->data = $datos;
+        if (empty($id)) {
+            $http->setHttpHeaders(400, new Response("Bad request"));
+            die();
         }
+        $objeto->load($id);
+        $raw = file_get_contents("php://input");
+        $datos = json_decode($raw);
+        foreach ($datos as $c => $v) {
+            $objeto->$c = $v;
+        }
+        $objeto->save();
 
         break;
     case 'DELETE':

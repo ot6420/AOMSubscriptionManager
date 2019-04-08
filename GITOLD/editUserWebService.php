@@ -1,15 +1,17 @@
 <?php
 // Get cURL resource
 $curl = curl_init();
+$id = 4;
 // Set some options - we are passing in a useragent too here
 curl_setopt_array($curl, array(
     CURLOPT_RETURNTRANSFER => 1,
-    CURLOPT_URL => 'http://localhost/AOMSubscriptionManager/webServices/api.php?controller=user&id=1',
+    CURLOPT_URL => 'http://localhost/AOMSubscriptionManager/webServices/api.php?controller=user&id=' . $id,
     CURLOPT_USERAGENT => 'Codular Sample cURL Request'
 ));
 // Send the request & save response to $resp
 $resp = curl_exec($curl);
-$resp = json_decode($resp);;
+$resp = json_decode($resp);
+;
 // Close requestto clear up some resources
 curl_close($curl);
 ?>
@@ -46,7 +48,7 @@ curl_close($curl);
 
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-                $id = 4;
+                //$id = 4;
 
                 $firstName = filter_input(INPUT_POST, "firstName", FILTER_SANITIZE_STRING);
                 $lastName = filter_input(INPUT_POST, "lastName", FILTER_SANITIZE_STRING);
@@ -61,6 +63,15 @@ curl_close($curl);
                 $languageFind->load($user1->interfaceLanguage);
 
                 if (!empty($firstName) && !empty($lastName) && !empty($birthDate) && !empty($email)) {
+
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, "'http://localhost/AOMSubscriptionManager/webServices/api.php?controller=user&id=' . $id");
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_PUT, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, '{"firstName":'."$user1->firstName = $firstName;".'}');
+                    $result = curl_exec($ch);
+                    var_dump($result);
+
                     //$sql = "update Users set firstName='$firstName', lastName='$lastName', birthDate='$birthDate', email='$email', interfaceLanguage='$interfaceLanguage' where userID=$userID";
                     $user1->firstName = $firstName;
                     $user1->lastName = $lastName;
@@ -78,7 +89,7 @@ curl_close($curl);
                     if (!empty($user1)) {
                         ?>
 
-                        <form method="POST">
+                        <form method="PUT">
                             <input type="hidden" class="form-control" id="userID" name="userID" value="<?= $user1->userID ?>">
                             <div class="form-group">
                                 <label for="firstName">Nombre:</label>
