@@ -110,6 +110,10 @@ switch ($verbo) {
             } else {
                 $http->setHttpHeaders(400, new Response("El controlador no contiene la función login", $controller));
             }
+        }
+        if($accion == "modifypass"){
+//En datos deberías tener los tres campos: old, new y renew
+//Si new y renew son iguales llamas a changePsswors
         } else {
         //Ponemos los valores en cada campo del objeto
         foreach ($datos as $c => $v) {

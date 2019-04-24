@@ -190,7 +190,11 @@ class userClass extends Tabla {
         $data = $this->getAll(['userID' => $userID]);
         return $data;
     }
-
+function changePassword($old,$new){
+    //Si la contraseña actual es igual a $old
+    //La cambias a $new y haces un save
+    
+}
     function loadAll() {
         return $this->getAll();
     }
