@@ -62,7 +62,22 @@ switch ($verbo) {
                 $http->setHttpHeaders(400, new Response("No hay token"));
             }
         }
-        elseif (empty($id)) {
+        if($accion == "logout") {
+            $headers = apache_request_headers();
+            var_dump($headers);
+            if(isset($headers["authorization"]) && $headers["authorization"] !=""){
+                $token_recibido=$headers["authorization"];    
+                $datos = $objeto->getDataToken($token_recibido);
+                $objeto->load($datos[0]["userID"]);
+                var_dump($objeto);
+                $objeto->setToken("");
+                $objeto->save();
+                $http->setHttpHeaders(200, new Response("Logout correcto"));
+            } else {
+                $http->setHttpHeaders(400, new Response("Error al cerrar sesión"));
+            }
+        }
+        /*elseif (empty($id)) {
             //Necesitamos crear la función loadAll en la clase o bien usar el getALL
             $datos = $objeto->loadAll();
             $http->setHttpHeaders(200, new Response("Lista $controller", $datos));
@@ -71,7 +86,7 @@ switch ($verbo) {
             $objeto->load($id);
             //Necesitamos crear una función serialize en la tabla que nos devuelva un array con los datos
             $http->setHttpHeaders(200, new Response("Lista $controller", $objeto->serialize()));
-        }
+        }*/
         break;
     case 'POST':
         if ($accion == "login") {
