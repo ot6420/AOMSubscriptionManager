@@ -64,13 +64,11 @@ switch ($verbo) {
         }
         if($accion == "logout") {
             $headers = apache_request_headers();
-            var_dump($headers);
             if(isset($headers["authorization"]) && $headers["authorization"] !=""){
                 $token_recibido=$headers["authorization"];    
                 $datos = $objeto->getDataToken($token_recibido);
                 $objeto->load($datos[0]["userID"]);
-                var_dump($objeto);
-                $objeto->setToken("");
+                $objeto->setToken(null);
                 $objeto->save();
                 $http->setHttpHeaders(200, new Response("Logout correcto"));
             } else {
