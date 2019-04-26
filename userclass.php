@@ -195,6 +195,9 @@ class userClass extends Tabla {
         echo $oldpass;
         echo $newpass;
         echo $newpass1;
+        if ($newpass == $newpass1) {
+            
+        }
     }
 
     //Si la contraseña actual es igual a $old
