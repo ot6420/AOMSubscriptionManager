@@ -110,15 +110,12 @@ switch ($verbo) {
             }
         }
         elseif($accion == "modifypass"){
-
             $datos = file_get_contents("php://input");
             $raw = json_decode($datos);
-            var_dump($raw);
-            if($new == $renew){
-                changePassword($new,$renew);
-            }
+            $datos = $objeto->changePassword($raw->oldpass, $raw->newpass, $raw->newpass1);
+            
 //En datos deberías tener los tres campos: old, new y renew
-//Si new y renew son iguales llamas a changePsswors
+//Si new y renew son iguales llamas a changePassword
         } else {
         //Ponemos los valores en cada campo del objeto
         foreach ($datos as $c => $v) {
