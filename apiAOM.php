@@ -74,6 +74,12 @@ switch ($verbo) {
             } else {
                 $http->setHttpHeaders(400, new Response("Error al cerrar sesión"));
             }
+        } 
+        if ($id != null) {
+            //Cargamos ese registro en concreto
+            $objeto->load($id);
+            //Necesitamos crear una función serialize en la tabla que nos devuelva un array con los datos
+            $http->setHttpHeaders(200, new Response("Lista $controller", $objeto->serialize()));
         }
         /*elseif (empty($id)) {
             //Necesitamos crear la función loadAll en la clase o bien usar el getALL
