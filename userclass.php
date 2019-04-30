@@ -191,9 +191,11 @@ class userClass extends Tabla {
         return $data;
     }
 function changePassword($old,$new){
-        if($old==$new){
+        if($old==$pass){
+            $pass = $new;
             
         }
+
     //Si la contraseña actual es igual a $old
     //La cambias a $new y haces un save
     
