@@ -74,6 +74,12 @@ switch ($verbo) {
             } else {
                 $http->setHttpHeaders(400, new Response("Error al cerrar sesión"));
             }
+        } 
+        if ($id != null) {
+            //Cargamos ese registro en concreto
+            $objeto->load($id);
+            //Necesitamos crear una función serialize en la tabla que nos devuelva un array con los datos
+            $http->setHttpHeaders(200, new Response("Lista $controller", $objeto->serialize()));
         }
         /*elseif (empty($id)) {
             //Necesitamos crear la función loadAll en la clase o bien usar el getALL
@@ -110,15 +116,34 @@ switch ($verbo) {
             }
         }
         elseif($accion == "modifypass"){
+            //$headers = apache_request_headers();
+           
+                $datos = file_get_contents("php://input");
+                $raw = json_decode($datos);
+                $old_pass = $raw->oldpass;
+                $newpass = $raw->newpass;
+                $newpass1 = $raw->newpass1;
+                //$datos = $objeto->changePassword($raw->oldpass, $raw->newpass, $raw->newpass1);
+                 
+                //$token_recibido=$headers["authorization"];    
+                $datosToken = $objeto->getDataToken("b57dfc60d082cdc38ea1f6abf3681d9d21b5ce042b92192ca94c97eb54d33845aaa2f5255fed2926b74708fc52b5e2669c4633b7cdae53e2a4a641955058f97c7adff837d416be4e29b2c543de1350250afb94442d485f187b155e78cb9ebdb20d1f7099");
 
-            $datos = file_get_contents("php://input");
-            $raw = json_decode($datos);
-            var_dump($raw);
-            if($new == $renew){
-                changePassword($new,$renew);
-            }
+                $current_pass = $datosToken[0]["pass"];
+                if ($current_pass == $old_pass) {
+                    if ($newpass == $newpass1) {
+                        $datos = $objeto->load($datosToken[0]["userID"]);
+                        $objeto->setPass($newpass);
+                        $objeto->save();
+                        $http->setHttpHeaders(200, new Response("Contraseña cambiada correctamente"));
+                    } else {
+                        $http->setHttpHeaders(400, new Response("Error al cambiar la contraseña: Las contraseñas no coinciden"));
+                    }
+                } else {
+                    $http->setHttpHeaders(400, new Response("Error al cambiar la contraseña: La contraseña actual no es correcta"));
+                }
+               
 //En datos deberías tener los tres campos: old, new y renew
-//Si new y renew son iguales llamas a changePsswors
+//Si new y renew son iguales llamas a changePassword
         } else {
         //Ponemos los valores en cada campo del objeto
         foreach ($datos as $c => $v) {

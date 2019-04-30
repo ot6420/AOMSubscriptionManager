@@ -10,10 +10,9 @@ class userClass extends Tabla {
     private $birthDate;
     private $email;
     private $pass;
-    private $interfaceLanguage;
     private $userType;
     private $token;
-    private $num_fields = 9;
+    private $num_fields = 8;
 
     function __construct() {
         $show = ["firstName"];
@@ -47,10 +46,6 @@ class userClass extends Tabla {
 
     function getPass1() {
         return $this->pass1;
-    }
-
-    function getInterfaceLanguage() {
-        return $this->interfaceLanguage;
     }
 
     function getUserType() {
@@ -89,10 +84,6 @@ class userClass extends Tabla {
         $this->pass1 = $pass1;
     }
 
-    function setInterfaceLanguage($interfaceLanguage) {
-        $this->interfaceLanguage = $interfaceLanguage;
-    }
-
     function setUserType($userType) {
         $this->userType = $userType;
     }
@@ -128,7 +119,6 @@ class userClass extends Tabla {
             $this->birthDate = $user['birthDate'];
             $this->email = $user['email'];
             $this->pass = $user['pass'];
-            $this->interfaceLanguage = $user['interfaceLanguage'];
             $this->userType = $user['userType'];
             $this->token = $user['token'];
         } else {
@@ -145,7 +135,6 @@ class userClass extends Tabla {
             $this->birthDate = null;
             $this->email = null;
             $this->pass = null;
-            $this->interfaceLanguage = null;
             $this->userType = null;
             $this->token = null;
         } else {
@@ -190,16 +179,20 @@ class userClass extends Tabla {
         $data = $this->getAll(['userID' => $userID]);
         return $data;
     }
-function changePassword($old,$new){
-        if($old==$pass){
-            $pass = $new;
+
+    function changePassword($oldpass,$newpass,$newpass1){
+        echo $oldpass;
+        echo $newpass;
+        echo $newpass1;
+        if ($newpass == $newpass1) {
             
         }
+    }
 
     //Si la contraseña actual es igual a $old
     //La cambias a $new y haces un save
     
-}
+
     function loadAll() {
         return $this->getAll();
     }
@@ -207,5 +200,4 @@ function changePassword($old,$new){
     function serialize() {
         return $this->valores();
     }
-    
 }
