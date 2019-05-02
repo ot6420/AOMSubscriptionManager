@@ -116,7 +116,7 @@ switch ($verbo) {
             }
         }
         elseif($accion == "modifypass"){
-            //$headers = apache_request_headers();
+            $headers = apache_request_headers();
            
                 $datos = file_get_contents("php://input");
                 $raw = json_decode($datos);
@@ -125,8 +125,8 @@ switch ($verbo) {
                 $newpass1 = $raw->newpass1;
                 //$datos = $objeto->changePassword($raw->oldpass, $raw->newpass, $raw->newpass1);
                  
-                //$token_recibido=$headers["authorization"];    
-                $datosToken = $objeto->getDataToken("b57dfc60d082cdc38ea1f6abf3681d9d21b5ce042b92192ca94c97eb54d33845aaa2f5255fed2926b74708fc52b5e2669c4633b7cdae53e2a4a641955058f97c7adff837d416be4e29b2c543de1350250afb94442d485f187b155e78cb9ebdb20d1f7099");
+                $token_recibido=$headers["authorization"];
+                $datosToken = $objeto->getDataToken($token_recibido);
 
                 $current_pass = $datosToken[0]["pass"];
                 if ($current_pass == $old_pass) {
