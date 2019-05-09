@@ -80,12 +80,12 @@ switch ($verbo) {
             $objeto->load($id);
             //Necesitamos crear una función serialize en la tabla que nos devuelva un array con los datos
             $http->setHttpHeaders(200, new Response("Lista $controller", $objeto->serialize()));
-        }
-        /*elseif (empty($id)) {
+        } else {
             //Necesitamos crear la función loadAll en la clase o bien usar el getALL
             $datos = $objeto->loadAll();
             $http->setHttpHeaders(200, new Response("Lista $controller", $datos));
-        } else {
+        } 
+        /*else {
             //Cargamos ese registro en concreto
             $objeto->load($id);
             //Necesitamos crear una función serialize en la tabla que nos devuelva un array con los datos
