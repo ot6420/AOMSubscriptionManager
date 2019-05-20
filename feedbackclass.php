@@ -108,4 +108,12 @@ class feedbackClass extends Tabla {
         }
     }
 
+    function loadAll() {
+        return $this->getAll();
+    }
+
+    function serialize() {
+        return $this->valores();
+    }
+
 }
