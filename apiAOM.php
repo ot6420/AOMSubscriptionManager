@@ -48,8 +48,13 @@ switch ($verbo) {
         //Si nos hacen una petición GET podemos tener dos casos, que nos pidan un id concreto o no
         //En el primer caso buscamos ese registro concreto, en el segundo caso devolvemos todo
         if ($accion == "usersubscriptions") {
+            $headers = apache_request_headers();
+            if(isset($headers["authorization"]) && $headers["authorization"] !=""){
             $datos = $objeto->loadUserSubscriptions($id);
             $http->setHttpHeaders(200, new Response("Lista $controller", $datos));
+            } else {
+                $http->setHttpHeaders(400, new Response("No hay token"));
+            }
             break;
         }   
         if($accion == "checkToken") {
@@ -78,15 +83,25 @@ switch ($verbo) {
             break;
         } 
         if ($id != null) {
+            $headers = apache_request_headers();
+            if(isset($headers["authorization"]) && $headers["authorization"] !=""){
             //Cargamos ese registro en concreto
             $objeto->load($id);
             //Necesitamos crear una función serialize en la tabla que nos devuelva un array con los datos
             $http->setHttpHeaders(200, new Response("Lista $controller", $objeto->serialize()));
+            } else {
+                $http->setHttpHeaders(400, new Response("No hay token"));
+            } 
      break;
         } else {
+            $headers = apache_request_headers();
+            if(isset($headers["authorization"]) && $headers["authorization"] !=""){
             //Necesitamos crear la función loadAll en la clase o bien usar el getALL
             $datos = $objeto->loadAll();
             $http->setHttpHeaders(200, new Response("Lista $controller", $datos));
+            } else {
+            $http->setHttpHeaders(400, new Response("No hay token"));
+            }
             break;
         } 
         /*else {
@@ -121,7 +136,7 @@ switch ($verbo) {
         }
         elseif($accion == "modifypass"){
             $headers = apache_request_headers();
-           
+            if(isset($headers["authorization"]) && $headers["authorization"] !=""){
                 $datos = file_get_contents("php://input");
                 $raw = json_decode($datos);
                 $old_pass = $raw->oldpass;
@@ -145,6 +160,9 @@ switch ($verbo) {
                 } else {
                     $http->setHttpHeaders(400, new Response("Error al cambiar la contraseña: La contraseña actual no es correcta"));
                 }
+            } else {
+                $http->setHttpHeaders(400, new Response("No hay token"));
+            }
                
 //En datos deberías tener los tres campos: old, new y renew
 //Si new y renew son iguales llamas a changePassword
@@ -165,6 +183,8 @@ switch ($verbo) {
             $http->setHttpHeaders(400, new Response("Bad request"));
             die();
         }
+        $headers = apache_request_headers();
+        if(isset($headers["authorization"]) && $headers["authorization"] !=""){
         //Cargar el objeto
         $objeto->load($id);
         //Lo mismo que POST
@@ -173,7 +193,9 @@ switch ($verbo) {
             $objeto->$c = $v;
         }
         $objeto->save();
-
+        } else {
+        $http->setHttpHeaders(400, new Response("No hay token"));
+        }
 
         break;
     case 'DELETE':
@@ -182,10 +204,15 @@ switch ($verbo) {
             $http->setHttpHeaders(400, new Response("Bad request"));
             die();
         }
+        $headers = apache_request_headers();
+        if(isset($headers["authorization"]) && $headers["authorization"] !=""){
         //Cargamos y borramos
         $objeto->load($id);
         $objeto->delete();
-        break;
+        } else {
+        $http->setHttpHeaders(400, new Response("No hay token"));
+        }
+        break; 
     default:
         $http->setHttpHeaders(400, new Response("Bad request: Verbo incorrecto"));
 }
